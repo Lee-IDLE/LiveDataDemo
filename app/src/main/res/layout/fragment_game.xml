@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.game.GameFragment">
@@ -46,6 +47,78 @@
                        tool:layout_constraintTop_toTopOf="parent"
                        tool:layout_constraintEnd_toEndOf="parent"
                        />
+
+                    <TextView
+                        android:id="@+id/tv_unscrambled_word"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text=""
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+                        tools:text="제목"
+                        tool:layout_constraintTop_toBottomOf="@id/word_count"
+                        tool:layout_constraintStart_toStartOf="parent"
+                        tool:layout_constraintEnd_toEndOf="parent"
+                        tool:layout_constraintBottom_toTopOf="@id/tv_instructions"
+                        />
+
+                   <TextView
+                       android:id="@+id/tv_instructions"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="@string/instructions"
+                       android:textSize="17sp"
+                       tools:text="소제목"
+                       tool:layout_constraintTop_toBottomOf="@id/tv_unscrambled_word"
+                       tool:layout_constraintStart_toStartOf="parent"
+                       tool:layout_constraintEnd_toEndOf="parent"
+                       tool:layout_constraintBottom_toTopOf=""/>
+
+                   <com.google.android.material.textfield.TextInputLayout
+                       android:id="@+id/textField"
+                       style="@style/Widget.Unscramble.TextInputLayout.OutlinedBox"
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="@dimen/default_margin"
+                       android:hint="@string/enter_your_word"
+                       app:errorIconDrawable="@drawable/ic_error"
+                       app:helperTextTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                       tool:layout_constraintTop_toBottomOf="@id/tv_instructions"
+                       tool:layout_constraintStart_toStartOf="parent"
+                       tool:layout_constraintEnd_toEndOf="parent"
+                       tool:layout_constraintBottom_toTopOf="">
+
+                       <com.google.android.material.textfield.TextInputEditText
+                           android:id="@+id/text_input_edit_text"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:inputType="textPersonName|textNoSuggestions"
+                           android:maxEms="1"/>
+
+                   </com.google.android.material.textfield.TextInputLayout>
+
+                   <Button
+                       android:id="@+id/btn_skip"
+                       style="?attr/materialButtonOutlinedStyle"
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_marginStart="@dimen/default_padding"
+                       android:layout_marginEnd="@dimen/default_padding"
+                       android:text="@string/skip"
+                       tool:layout_constraintStart_toStartOf="parent"
+                       tool:layout_constraintBaseline_toBaselineOf="@id/btn_submit"
+                       tool:layout_constraintEnd_toStartOf="@id/btn_submit"/>
+
+                   <Button
+                       android:id="@+id/btn_submit"
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="@dimen/default_margin"
+                       android:text="@string/submit"
+                       tool:layout_constraintStart_toEndOf="@id/btn_skip"
+                       tool:layout_constraintEnd_toEndOf="parent"
+                       tool:layout_constraintTop_toBottomOf="@id/textField"/>
 
                </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

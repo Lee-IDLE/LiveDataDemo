@@ -3,17 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".ui.game.GameFragment">
 
-    <!--
     <data>
         <variable
-            name=""
-            type="" />
+            name="gameViewModel"
+            type="com.lee_idle.livedatademo.ui.game.GameViewModel" />
+        <variable
+            name="maxNoOfWords"
+            type="int" />
     </data>
-    -->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,13 +22,13 @@
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:padding="16dp"
-                   tool:context=".ui.game.GameFragment">
+                   tools:context=".ui.game.GameFragment">
 
                    <TextView
                        android:id="@+id/word_count"
-                       android:layout_width="wrap_content"
+                       android:layout_width="0dp"
                        android:layout_height="wrap_content"
-                       android:text=""
+                       android:text="@{@string/word_count(gameViewModel.currentWordCount, maxNoOfWords)}"
                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                        tools:text="왼쪽 위"
                        tool:layout_constraintTop_toTopOf="parent"
@@ -40,7 +39,7 @@
                        android:id="@+id/score"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text=""
+                       android:text="@{@string/score(gameViewModel.score)}"
                        tools:text="오른쪽 위"
                        android:textAllCaps="true"
                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
@@ -54,9 +53,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin"
                         android:layout_marginBottom="@dimen/default_margin"
-                        android:text=""
+                        android:text="@{gameViewModel.currentScrambledWord}"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
-                        tools:text="제목"
+                        tools:text="Scramble word"
                         tool:layout_constraintTop_toBottomOf="@id/word_count"
                         tool:layout_constraintStart_toStartOf="parent"
                         tool:layout_constraintEnd_toEndOf="parent"
@@ -72,8 +71,7 @@
                        tools:text="소제목"
                        tool:layout_constraintTop_toBottomOf="@id/tv_unscrambled_word"
                        tool:layout_constraintStart_toStartOf="parent"
-                       tool:layout_constraintEnd_toEndOf="parent"
-                       tool:layout_constraintBottom_toTopOf=""/>
+                       tool:layout_constraintEnd_toEndOf="parent" />
 
                    <com.google.android.material.textfield.TextInputLayout
                        android:id="@+id/textField"
@@ -86,8 +84,7 @@
                        app:helperTextTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                        tool:layout_constraintTop_toBottomOf="@id/tv_instructions"
                        tool:layout_constraintStart_toStartOf="parent"
-                       tool:layout_constraintEnd_toEndOf="parent"
-                       tool:layout_constraintBottom_toTopOf="">
+                       tool:layout_constraintEnd_toEndOf="parent">
 
                        <com.google.android.material.textfield.TextInputEditText
                            android:id="@+id/text_input_edit_text"

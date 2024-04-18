@@ -42,7 +42,15 @@ android {
 
 dependencies {
 
-    implementation("androidx.databinding:databinding-runtime:8.3.1")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
+    implementation("androidx.databinding:databinding-runtime:8.3.2")
+
+    implementation("androidx.activity:activity-ktx:1.8.2")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -46,6 +46,19 @@ class GameFragment : Fragment() {
         if(viewModel.isGameOver()){
             showFinalScoreDialog()
         }
+
+        // 현재 스크램블드워드 라이브데이터를 관찰합니다.
+        viewModel.currentScrambledWord.observe(viewLifecycleOwner, {newWord ->
+            binding.tvUnscrambledWord.text = newWord
+        })
+
+        viewModel.score.observe(viewLifecycleOwner, { newScore ->
+            binding.score.text = getString(R.string.score, newScore)
+        })
+
+        viewModel.currentWordCount.observe(viewLifecycleOwner, {newWordCount ->
+            binding.wordCount.text = getString(R.string.word_count, newWordCount, MAX_NO_OF_WORDS)
+        })
     }
 
     /**

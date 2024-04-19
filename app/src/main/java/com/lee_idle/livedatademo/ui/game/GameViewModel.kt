@@ -50,8 +50,9 @@ class GameViewModel: ViewModel() {
         getNextWord()
     }
 
-    /*
-     * Updates currentWord and currentScrambledWord with the next word.
+    /**
+     * 현재 단어와 현재 스크램블 단어를 다음 단어로 업데이트합니다.
+     *
      */
     private fun getNextWord() {
         currentWord = allWordsList.random()
@@ -71,8 +72,8 @@ class GameViewModel: ViewModel() {
         }
     }
 
-    /*
-     * Re-initializes the game data to restart the game.
+    /**
+     * 게임 데이터를 다시 초기화하여 게임을 다시 시작합니다.
      */
     fun reinitializeData() {
         _score.value = 0
@@ -82,9 +83,9 @@ class GameViewModel: ViewModel() {
         isGameOver = false
     }
 
-    /*
-    * Increases the game score if the player’s word is correct.
-    */
+    /**
+     * 플레이어의 말이 맞으면 게임 점수가 증가합니다.
+     */
     private fun increaseScore() {
         _score.value = _score.value?.plus(SCORE_INCREASE)
     }
@@ -101,9 +102,11 @@ class GameViewModel: ViewModel() {
         return false
     }
 
-    /*
-    * Returns true if the current word count is less than MAX_NO_OF_WORDS
-    */
+    /**
+     * 현재 단어 수가 MAX_NO_OF_WORDS보다 작으면 true를 반환합니다.
+     *
+     * @return 단어가 남았으면 true
+     */
     fun nextWord(): Boolean {
         return if (_currentWordCount.value!! < MAX_NO_OF_WORDS) {
             getNextWord()
